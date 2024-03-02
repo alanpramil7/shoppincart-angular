@@ -1,0 +1,12 @@
+<app-header> </app-header>
+<section class="product__container">
+  <h1>Products</h1>
+  <div class="product__card">
+    <div *ngFor="let product of products" class="product">
+      <img [src]="product.thumbnail" alt="thumbnail" />
+      <h3>{{ product.title }}</h3>
+      <p>{{ product.price | currency : "USD" }}</p>
+      <button routerLink="login">Add to cart</button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+<header class="product__header">
+  <div>
+    <img
+      (click)="navigate()"
+      class="header__logo"
+      src="./../../../assets/logo.svg"
+      alt="logo"
+    />
+  </div>
+  <div *ngIf="user; else notAdmin" class="header__btn2">
+    <p>
+      Hello <br />
+      {{ user.username }}
+    </p>
+    <button (click)="logout()">Logout</button>
+    <div *ngIf="!user?.isAdmin">
+      <button routerLink="/cartpage" class="header__cart">
+        <img src="../../../assets/shopping-cart.svg" alt="Cart" />
+      </button>
+    </div>
+  </div>
+  <ng-template #notAdmin>
+    <div class="header__btn1">
+      <button routerLink="login">Login</button>
+      <button routerLink="register">Register</button>
+    </div>
+  </ng-template>
+</header>

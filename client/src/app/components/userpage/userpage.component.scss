@@ -1,0 +1,70 @@
+.product__container {
+  margin: 8rem 16rem;
+
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .product__card {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+
+    .product {
+      flex-basis: calc(33.33% - 20px);
+      margin-bottom: 2rem;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      }
+
+      h3 {
+        font-weight: 700;
+        line-height: 20px;
+        margin: 0.5rem;
+        color: #333;
+      }
+
+      img {
+        height: 10rem;
+        width: 100%;
+        object-fit: cover;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      button {
+        background-color: #fbd815;
+        width: 10rem;
+        font-size: 1.1em;
+        padding: 0.5em;
+        margin: 0.5rem;
+        border-radius: 25px;
+        border: 1px solid #d5d9d9;
+        transition: background-color 0.3s ease;
+        margin-bottom: 1rem;
+
+        &:hover:not([disabled]) {
+          background-color: #eecf1d;
+          cursor: pointer;
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          background-color: lightgray;
+        }
+      }
+
+    }
+  }
+
+}

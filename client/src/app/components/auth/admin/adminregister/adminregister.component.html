@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>Register</h1>
+  <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
+    <div>
+      <label>Username</label>
+      <input
+        type="text"
+        placeholder="Enter your name..."
+        [formControlName]="'username'"
+      />
+      <small
+        *ngIf="
+          registerForm.get('username')?.invalid &&
+          registerForm.get('username')?.touched
+        "
+        >*Username is required</small
+      >
+
+      <label>Email</label>
+      <input
+        type="email"
+        placeholder="Enter your email..."
+        [formControlName]="'email'"
+      />
+      <small
+        *ngIf="
+          registerForm.get('email')?.invalid &&
+          registerForm.get('email')?.touched
+        "
+        >*Email is required</small
+      >
+      <label>Password</label>
+      <input
+        type="password"
+        placeholder="Enter you password here..."
+        [formControlName]="'password'"
+      />
+      <small
+        *ngIf="
+          registerForm.get('password')?.invalid &&
+          registerForm.get('password')?.touched
+        "
+        >*Password must be more tahn four letters</small
+      >
+      <div>
+        <button type="submit" class="formbtn" [disabled]="registerForm.invalid">
+          Register
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

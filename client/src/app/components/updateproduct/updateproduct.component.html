@@ -1,0 +1,24 @@
+<div class="product__form" *ngIf="updateForm">
+  <h2>Update Product</h2>
+  <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Product Name</label>
+      <input type="text" [formControlName]="'title'" />
+    </div>
+    <div>
+      <label>Price</label>
+      <input type="text" [formControlName]="'price'" />
+    </div>
+    <div>
+      <label>Thumbnail</label>
+      <input type="text" [formControlName]="'thumbnail'" />
+    </div>
+    <div>
+      <label>Product Quantity</label>
+      <input type="text" [formControlName]="'productQuantity'" />
+    </div>
+    <button type="submit" [disabled]="updateForm.invalid">
+      Update Product
+    </button>
+  </form>
+</div>

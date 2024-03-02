@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 
 router.use(cookieToken);
 
-router.post("/", isAdmin, async (req, res) => {
+router.post("/newproduct", isAdmin, async (req, res) => {
   try {
     const newProduct = await Product.create({
       title: req.body.title,

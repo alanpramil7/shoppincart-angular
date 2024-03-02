@@ -1,0 +1,19 @@
+<app-header></app-header>
+<section class="product__container">
+  <h1>Products</h1>
+  <div *ngIf="user?.isAdmin" class="product__addbutton">
+    <button routerLink="/newproduct">Add product</button>
+  </div>
+  <div class="product__card">
+    <div *ngFor="let product of products" class="product">
+      <img [src]="product.thumbnail" alt="thumbnail" />
+      <h3>{{ product.title }}</h3>
+      <p>{{ product.price | currency: "USD" }}</p>
+      <p>Quantity: {{ product.productQuantity }}</p>
+      <div class="product__btn">
+        <button [routerLink]="'/update/' + product.id">Update</button>
+        <button (click)="deleteProduct(product.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+<app-header></app-header>
+<section class="cart__container">
+  <h1>Cart</h1>
+  <div class="cart__product" *ngFor="let product of products">
+    <div class="cart__card" *ngIf="getQuantity(product.id) !== 0">
+      <img [src]="product.thumbnail" alt="Thumbnail" />
+      <h3>{{ product.title }}</h3>
+      <app-quantifier
+        [product]="product"
+        [quantity]="getQuantity(product.id)"
+        (handleUpdate)="handleUpdate($event.productId, $event.operation)"
+      ></app-quantifier>
+    </div>
+  </div>
+  <div class="totalprice">Total: {{ totalPrice }}</div>
+</section>

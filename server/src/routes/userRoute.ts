@@ -103,16 +103,21 @@ router.post("/login/admin", async (req, res) => {
           data: safeUser,
         });
       } else {
-        res
-          .status(401)
-          .json({ success: false, message: "Invalid credentials", data: null });
+        res.status(401).json({
+          success: false,
+          message: "Invalid credentialsss",
+          data: null,
+        });
       }
     } else {
-      res
-        .status(401)
-        .json({ success: false, message: "Invalid credentials", data: null });
+      res.status(401).json({
+        success: false,
+        message: "Invalid credentialssssss",
+        data: null,
+      });
     }
   } catch (error) {
+    console.log(error);
     res
       .status(500)
       .json({ success: false, message: "Something went wrong", data: null });
@@ -126,7 +131,7 @@ router.get("/logout", (req, res) => {
     httpOnly: true,
   });
 
-  res.status(200).send("Sucessfully logged out");
+  res.status(200).send({ message: "Sucessfully logged out" });
 });
 
 router.get("/get", async (req: customRequest, res) => {
