@@ -10,7 +10,7 @@
         (click)="addToCart(product.id)"
         [disabled]="!product.productQuantity"
       >
-        Add to cart
+        {{ product.productQuantity ? "Add To Cart" : "Out Of Stock" }}
       </button>
     </div>
   </div>

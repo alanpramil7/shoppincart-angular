@@ -11,7 +11,7 @@ import { ProductService } from '../../services/product.service';
 })
 export class CartpageComponent implements OnInit {
   user!: User;
-  cartData: any = [];
+  cartData: cartData[] = [];
   products!: Product[];
   totalPrice: number = 0;
 
@@ -88,7 +88,7 @@ export class CartpageComponent implements OnInit {
           const index = this.cartData.findIndex(
             (item: cartData) => item.productId === productId,
           );
-          if (index !== 1) {
+          if (index !== -1) {
             if (operation === 'increase') {
               this.cartData[index].quantity++;
             } else if (operation === 'decrease') {
