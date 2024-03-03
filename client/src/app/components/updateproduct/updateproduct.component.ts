@@ -3,6 +3,7 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../types';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-updateproduct',
@@ -18,6 +19,7 @@ export class UpdateproductComponent implements OnInit {
     private productService: ProductService,
     private activatedRoutes: ActivatedRoute,
     private router: Router,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -62,9 +64,10 @@ export class UpdateproductComponent implements OnInit {
       )
       .subscribe({
         next: (data) => {
-          console.log('Product updated sucessfuly');
+          this.toastr.success('Product updated');
         },
         error: (e) => {
+          this.toastr.error('Error updating product');
           console.log('Error on updating the product', e);
         },
         complete: () => {

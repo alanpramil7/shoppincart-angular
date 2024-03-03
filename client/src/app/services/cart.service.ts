@@ -14,12 +14,6 @@ export class CartService {
     });
   }
 
-  // getCartBYIds(ids: number[]): Observable<any> {
-  //   return this.http.post('http://localhost:5001/cart', ids, {
-  //     withCredentials: true,
-  //   });
-  // }
-
   quantityUpdate(
     userId: number,
     productId: number,

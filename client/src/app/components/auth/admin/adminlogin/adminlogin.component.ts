@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../../services/user.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-adminlogin',
@@ -14,6 +15,7 @@ export class AdminloginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -32,9 +34,10 @@ export class AdminloginComponent implements OnInit {
       const { email, password } = this.loginForm.value;
       this.userService.adminLogin(email, password).subscribe({
         next: (data: any) => {
-          console.log(data);
+          this.toastr.success('Logged in');
         },
         error: (error) => {
+          this.toastr.error('Invaild Credentials');
           console.log('Error while logging admin', error);
         },
         complete: () => {

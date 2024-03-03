@@ -1,6 +1,5 @@
-import { HttpClient, withFetch } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { OnSameUrlNavigation } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({

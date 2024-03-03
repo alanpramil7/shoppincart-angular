@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product, User } from '../../types';
 import { UserService } from '../../services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-adminpage',
@@ -12,6 +13,7 @@ export class AdminpageComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private userService: UserService,
+    private toastr: ToastrService,
   ) {}
 
   products!: Product[];
@@ -48,7 +50,7 @@ export class AdminpageComponent implements OnInit {
     console.log(id);
     this.productService.deleteProduct(id).subscribe({
       next: (data) => {
-        console.log('Product deleted sucessfully');
+        this.toastr.success('Product deleted');
         const deletedProductIndex = this.products.findIndex(
           (product) => product.id === id,
         );
@@ -56,6 +58,7 @@ export class AdminpageComponent implements OnInit {
       },
       error: (e) => {
         console.log('Error deleting product', e);
+        this.toastr.error('Error deleting product');
       },
     });
   }

@@ -3,6 +3,7 @@ import { Product, User, cartData } from '../../types';
 import { UserService } from '../../services/user.service';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cartpage',
@@ -19,6 +20,7 @@ export class CartpageComponent implements OnInit {
     private userService: UserService,
     private cartService: CartService,
     private productService: ProductService,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -84,7 +86,8 @@ export class CartpageComponent implements OnInit {
       .quantityUpdate(this.user.id, productId, operation)
       .subscribe({
         next: (data) => {
-          console.log('cart updated');
+          console.log(data);
+          this.toastr.success('cart updated');
           const index = this.cartData.findIndex(
             (item: cartData) => item.productId === productId,
           );
@@ -109,6 +112,7 @@ export class CartpageComponent implements OnInit {
               }
             }
           } else {
+            this.toastr.error('Out of stock');
             console.log('Cart item not found');
           }
         },

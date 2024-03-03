@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../../services/user.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-userlogin',
@@ -14,6 +15,7 @@ export class UserloginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -32,10 +34,11 @@ export class UserloginComponent implements OnInit {
       const { email, password } = this.loginForm.value;
       this.userService.userLogin(email, password).subscribe({
         next: (data: any) => {
-          console.log(data);
+          this.toastr.success('Logged in');
         },
         error: (error) => {
-          console.log('Error while logging admin', error);
+          this.toastr.error('Invalid credentials');
+          console.log('Error while logging user', error);
         },
         complete: () => {
           this.router.navigate(['userpage']);

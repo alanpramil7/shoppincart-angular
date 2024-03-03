@@ -14,7 +14,7 @@ import { UpdateproductComponent } from './components/updateproduct/updateproduct
 import { CartpageComponent } from './components/cartpage/cartpage.component';
 
 const routes: Routes = [
-  { path: '', component: ProductComponent, pathMatch: 'full' }, //default route
+  { path: '', component: ProductComponent, pathMatch: 'full' }, 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'register/admin', component: AdminregisterComponent },
