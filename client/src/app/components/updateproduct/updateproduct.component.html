@@ -1,5 +1,10 @@
 <div class="product__form" *ngIf="updateForm">
-  <h2>Update Product</h2>
+  <div class="top__container">
+    <h2>Add New Product</h2>
+    <a href="/adminpage">
+    <i  class="pi pi-times"></i>
+    </a>
+  </div>
   <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
     <div>
       <label>Product Name</label>

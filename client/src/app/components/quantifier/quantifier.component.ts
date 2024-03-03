@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../types';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-quantifier',
@@ -11,7 +12,7 @@ export class QuantifierComponent {
   @Input() product: Product | undefined;
   @Output() handleUpdate: EventEmitter<any> = new EventEmitter();
 
-  constructor() {}
+  constructor(private toastr: ToastrService) {}
 
   incresae() {
     if (this.product?.productQuantity !== 0) {
@@ -20,7 +21,7 @@ export class QuantifierComponent {
         operation: 'increase',
       });
     } else {
-      console.log('Out of stock');
+      this.toastr.error("Out of stock")
     }
   }
   reduce() {

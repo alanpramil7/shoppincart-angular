@@ -112,7 +112,6 @@ export class CartpageComponent implements OnInit {
               }
             }
           } else {
-            this.toastr.error('Out of stock');
             console.log('Cart item not found');
           }
         },
