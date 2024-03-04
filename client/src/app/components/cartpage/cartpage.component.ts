@@ -116,6 +116,7 @@ export class CartpageComponent implements OnInit {
           }
         },
         error: (e) => {
+          this.toastr.error("Out of stock")
           console.log('Error on updating the quantity', e);
         },
       });
